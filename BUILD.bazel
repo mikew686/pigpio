@@ -8,11 +8,111 @@ cc_library(
 		"pigpio.h",
 		"command.h",
 	],
-	#includes = [
-	#	"include",
-	#],
+	includes = [
+		"pigpio.h",
+		"command.h",
+	],
 	linkopts = [
 		"-lrt",
+		"-lpthread",
 	],
 	visibility = ["//visibility:public"],
 )
+cc_library(
+	name = "pigpiod_if2",
+	srcs = [
+		"pigpiod_if2.c",
+		"command.c",
+	],
+	hdrs = [
+		"pigpio.h",
+		"pigpiod_if2.h",
+		"command.h",
+	],
+	linkopts = [
+		"-lrt",
+		"-lpthread",
+	],
+	visibility = ["//visibility:public"],
+)
+cc_library(
+	name = "pigpiod_if",
+	srcs = [
+		"pigpiod_if.c",
+		"command.c",
+	],
+	hdrs = [
+		"pigpio.h",
+		"pigpiod_if.h",
+		"command.h",
+	],
+	linkopts = [
+		"-lrt",
+		"-lpthread",
+	],
+	visibility = ["//visibility:public"],
+)
+cc_binary(
+	name = "pigpiod",
+	srcs = [
+		"pigpiod.c",
+	],
+	deps = [
+		":pigpiod_if",
+		":pigpio",
+	]
+)
+cc_binary(
+	name = "pigs",
+	srcs = [
+		"pigs.c",
+		"pigs.h",
+	],
+	deps = [
+		":pigpio",
+	]
+)
+
+# pigpio test
+cc_binary(
+	name = "x_pigpio",
+	srcs = [
+		"x_pigpio.c",
+	],
+	deps = [
+		":pigpio",
+	]
+)
+# pigpiod_if test
+cc_binary(
+	name = "x_pigpiod_if",
+	srcs = [
+		"x_pigpiod_if.c",
+	],
+	deps = [
+		":pigpiod_if",
+	]
+)
+# pigpiod_if2 test
+cc_binary(
+	name = "x_pigpiod_if2",
+	srcs = [
+		"x_pigpiod_if2.c",
+	],
+	deps = [
+		":pigpiod_if2",
+	]
+)
+
+# the library (libpigpio.so) in /usr/local/lib
+# the library (libpigpiod_if.so) in /usr/local/lib
+# the library (libpigpiod_if2.so) in /usr/local/lib
+# the header file (pigpio.h) in /usr/local/include
+# the header file (pigpiod_if.h) in /usr/local/include
+# the header file (pigpiod_if2.h) in /usr/local/include
+# the header file (pigs.h) in /usr/local/include
+# the daemon (pigpiod) in /usr/local/bin
+# the socket interface (pigs) in /usr/local/bin
+# the utility pig2vcd in /usr/local/bin
+# man pages in /usr/local/man/man1 and /usr/local/man/man3
+# the Python module pigpio.py for Python 2 and 3

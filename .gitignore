@@ -2,3 +2,12 @@
 **/bazel-*
 *.o
 *.so
+libpigpio.so.1
+libpigpiod_if.so.1
+libpigpiod_if2.so.1
+pig2vcd
+pigpiod
+pigs
+x_pigpio
+x_pigpiod_if
+x_pigpiod_if2

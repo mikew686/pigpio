@@ -62,8 +62,10 @@ cmdInfo_t cmdInfo[]=
    {PI_CMD_BSPIO, "BSPIO", 134, 0, 0}, // bbSPIOpen
    {PI_CMD_BSPIX, "BSPIX", 193, 6, 0}, // bbSPIXfer
 
+/** mikew686 removed
    {PI_CMD_CF1,   "CF1",   195, 2, 0}, // gpioCustom1
    {PI_CMD_CF2,   "CF2",   195, 6, 0}, // gpioCustom2
+*/
 
    {PI_CMD_CGI,   "CGI",   101, 4, 1}, // gpioCfgGetInternals
    {PI_CMD_CSI,   "CSI",   111, 1, 1}, // gpioCfgSetInternals

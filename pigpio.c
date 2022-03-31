@@ -2014,16 +2014,18 @@ static int myDoCommand(uintptr_t *p, unsigned bufSize, char *buf)
          }
          break;
 
+/* mikew686 removed
       case PI_CMD_CF1:
          res = gpioCustom1(p[1], p[2], buf, p[3]);
          break;
 
       case PI_CMD_CF2:
-         /* a couple of extra precautions for untrusted code */
+         // a couple of extra precautions for untrusted code
          if (p[2] > bufSize) p[2] = bufSize;
          res = gpioCustom2(p[1], buf, p[3], buf, p[2]);
          if (res > p[2]) res = p[2];
          break;
+*/
 
       case PI_CMD_CGI: res = gpioCfgGetInternals(); break;
 
